@@ -1,26 +1,70 @@
-# Lumis Website v2 — lumisapp.org Launch Steps
+# Lumis Website — lumisapp.org
 
-Files: `index.html` (landing + company story), `privacy.html`, `support.html`.
-No build step, no frameworks — static HTML, works from any host. Replaces the v1 site in `Lumis/Website/` on Hudson's Mac.
+Files: `index.html` (landing + waitlist form), `privacy.html`, `support.html`, `terms.html`, `CNAME`.
+No build step, no frameworks — static HTML. Every page carries its own inline CSS and a small
+starfield canvas; there are no external requests at all (no CDNs, no webfonts, no analytics).
 
-## Go-live checklist (~20 min total)
+## Deployment: GitHub Pages (live)
 
-1. **Waitlist form (3 min):** create a free form at tally.so (fields: Email / First name / School). Copy the form URL and replace `YOUR_FORM_ID` in `index.html` (one spot, the waitlist button). Signups land in the Tally dashboard and can auto-sync to a Google Sheet.
-2. **Deploy (5 min):** from this folder run `npx vercel` then `npx vercel --prod` (any Vercel account; ideally the same one as the backend once Vercel is org-connected). Alternative: push to a `CoralCodeLLC/lumis-website` GitHub repo and import to Vercel for auto-deploy on push.
-3. **Domain (5 min, in Namecheap):** Vercel project → Settings → Domains → add `lumisapp.org` + `www.lumisapp.org`. Then in Namecheap → Domain → Advanced DNS:
-   - A record, host `@`, value `76.76.21.21`
-   - CNAME record, host `www`, value `cname.vercel-dns.com`
-   - HTTPS is automatic once DNS propagates (minutes to a few hours).
-4. **Email forwarding (5 min, in Namecheap):** Domain → Redirect Email: forward `hello@`, `support@`, `privacy@` → your Gmail(s). The site references all three — do this before sharing the URL so mail doesn't bounce.
+This repo **is** the live site. `git push origin main` deploys it — Pages serves from the repo root
+and `CNAME` holds `lumisapp.org`. Give it 1–2 minutes after a push.
+
+DNS is in Namecheap and already set:
+
+- 4× A record, host `@` → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
+- CNAME, host `www` → `coralcodellc.github.io`
+- Email forwarding: `hello@`, `support@`, `privacy@` → Hudson's Gmail
+
+> The old Vercel plan (A record `76.76.21.21`, `npx vercel --prod`) is **superseded** — ignore it.
+
+## Design direction
+
+One committed dark "astral" theme across every page: a fixed starfield behind the whole document,
+translucent glass panels, purple accents (`#8B6BFF` / `#B49CFF`), serif display face (Iowan Old
+Style / Palatino / Georgia) with a mono face for labels and data. No white grounds anywhere —
+that's deliberate, per Hudson, July 2026. Both the OS theme preference and the in-page theme
+toggle are pinned to dark so the look never inverts.
+
+## Waitlist form
+
+`index.html` posts JSON to **`POST https://studybuddy-liard-eight.vercel.app/api/waitlist`**
+(the `studybuddy` backend in `CoralCodeLLC/Student-Hub`). Fields: `email` (required),
+`school` (optional), `betaTester` (bool), `source`, plus a `website` honeypot that real people
+never fill in.
+
+Behavior:
+
+- **200 `{ok:true, already:false}`** → success panel replaces the form.
+- **200 `{ok:true, already:true}`** → "you were already on it" panel (resubmitting is not an error).
+- **429** → too many from one IP (5 per 15 min, 20 per UTC day, counted in Postgres).
+- **anything else / network failure** → falls back to a visible `mailto:hello@lumisapp.org` so a
+  signup is never silently lost.
+
+Signups land in the `WaitlistSignup` table in Supabase. Export with:
+
+```sql
+select email, school, "betaTester", "createdAt" from "WaitlistSignup" order by "createdAt";
+```
+
+**Endpoint must be deployed for the form to work.** Until then the form shows its email fallback.
+The endpoint ships in the `waitlist-endpoint` branch of `CoralCodeLLC/Student-Hub`; merging it to
+`main` applies the schema automatically (the build script runs `prisma db push`).
+Optional but recommended: set `WAITLIST_IP_SALT` to a random string in the Vercel project env so
+IP hashes aren't guessable.
 
 ## App Store dependency
 
-`https://lumisapp.org/privacy.html` and `https://lumisapp.org/support.html` are the required Support/Privacy URLs for App Store submission (already referenced in the listing package). Site must be live before **submission** (not needed for TestFlight).
+`https://lumisapp.org/privacy.html` and `https://lumisapp.org/support.html` are the required
+Support/Privacy URLs for App Store submission. The site must be live before **submission**
+(not needed for TestFlight). The privacy policy documents the waitlist data we collect — keep it
+accurate if the form fields change.
 
 ## Deliberately soft / to revisit
 
-- **Pricing:** no dollar amounts on the site — Decision Record 4 ($4.99/$29.99 recommended) isn't decided. Once the founders decide, update the Premium card in `index.html` (#pricing) and the FAQ answer.
-- **Screenshots:** the hero uses a CSS phone mockup. Swap in real app screenshots once the UI is final — real screenshots convert better.
-- **Founder names:** About section uses first names only (Hudson / Jesse). Add last names/photos/links if you want.
-- **Social links:** none yet — add to the footer once the handle decision (@getlumis / @uselumis / @lumisplanner) is made and registered.
-- **Fonts:** system stacks (Palatino/Iowan serif + system sans) — zero external requests, fast, iOS-native feel. Could swap a webfont later if desired.
+- **Pricing:** no dollar amounts on the site — the pricing decision isn't final. When it is, update
+  the Premium card (`#pricing`) and the FAQ answer.
+- **Screenshots:** the hero is a CSS phone mockup in the app's dark theme. Swap in real screenshots
+  once the UI is final — real screenshots convert better.
+- **Terms:** drafted in-house, still wants an attorney pass.
+- **Social links:** none in the footer yet — add once the handle is registered.
+- **Coral Code studio site:** separate from this repo. Cross-link both ways once its domain exists.

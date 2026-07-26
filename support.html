@@ -5,60 +5,101 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Support — Lumis</title>
 <meta name="description" content="Support and help for Lumis: Student Planner.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='7' fill='%237D5CFF'/%3E%3Cg stroke='%237D5CFF' stroke-width='2.6' stroke-linecap='round'%3E%3Cpath d='M16 2v5M16 25v5M2 16h5M25 16h5M6 6l3.5 3.5M22.5 22.5L26 26M26 6l-3.5 3.5M9.5 22.5L6 26'/%3E%3C/g%3E%3C/svg%3E">
+<meta name="theme-color" content="#0A0620">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='7' fill='%23B49CFF'/%3E%3Cg stroke='%23B49CFF' stroke-width='2.6' stroke-linecap='round'%3E%3Cpath d='M16 2v5M16 25v5M2 16h5M25 16h5M6 6l3.5 3.5M22.5 22.5L26 26M26 6l-3.5 3.5M9.5 22.5L6 26'/%3E%3C/g%3E%3C/svg%3E">
 <style>
-:root{--paper:#FFFFFF;--ink:#211A3E;--ink-soft:#5D5878;--lumen:#6C4BE0;--lumen-bright:#7D5CFF;--card:#FFFFFF;--line:#E7E4F3}
+:root{
+  --void:#0A0620; --panel:rgba(23,16,54,.72);
+  --line:rgba(150,124,255,.22); --line-strong:rgba(168,144,255,.42);
+  --star:#EFEAFF; --text:#E6E0FB; --muted:#C2BAE8; --faint:#9C93C8;
+  --purple:#8B6BFF; --purple-lit:#B49CFF; --purple-pale:#D8CCFF;
+  --serif:"Iowan Old Style",Palatino,"Palatino Linotype","Book Antiqua",Georgia,serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+:root[data-theme="light"],:root[data-theme="dark"]{color-scheme:dark}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--paper);color:var(--ink);line-height:1.65}
-.display{font-family:"Iowan Old Style",Palatino,"Palatino Linotype","Book Antiqua",Georgia,serif}
-.wrap{max-width:720px;margin:0 auto;padding:0 24px}
-header{border-bottom:1px solid var(--line)}
-.nav{display:flex;align-items:center;justify-content:space-between;height:60px}
-.brand{display:flex;align-items:center;gap:9px;font-weight:700;color:var(--ink);text-decoration:none}
-.nav a.back{color:var(--lumen);text-decoration:none;font-size:.9rem}
-main{padding:56px 0 80px}
-h1{font-size:2rem;margin-bottom:.3rem;font-weight:600;letter-spacing:-.01em}
-.sub{color:var(--ink-soft);margin-bottom:2rem;max-width:60ch}
-a{color:var(--lumen)}
-.contact{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--lumen-bright);border-radius:10px;padding:16px 20px;margin-bottom:2.4rem}
-.contact p{color:var(--ink-soft);font-size:.95rem}
-.contact strong{color:var(--ink)}
-h2{font-size:1.15rem;margin:2rem 0 .2rem;font-weight:650}
-details{border-bottom:1px solid var(--line);padding:16px 2px}
-summary{cursor:pointer;font-weight:650;font-size:1rem;list-style:none;display:flex;justify-content:space-between;gap:16px}
-summary::after{content:"+";color:var(--lumen);font-size:1.25rem;line-height:1;transition:transform .2s}
+html{background:var(--void)}
+body{font-family:var(--sans);background:var(--void);color:var(--text);line-height:1.68;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+#sky{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+#nebula{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(60% 34% at 80% -6%,rgba(139,107,255,.3),transparent 62%),
+    radial-gradient(52% 30% at 8% 12%,rgba(90,63,208,.2),transparent 66%)}
+.page{position:relative;z-index:1}
+.display{font-family:var(--serif);font-weight:600}
+.wrap{max-width:740px;margin:0 auto;padding:0 24px}
+header.site{border-bottom:1px solid var(--line);background:rgba(10,6,32,.6);backdrop-filter:blur(10px)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.brand{display:flex;align-items:center;gap:9px;font-family:var(--serif);font-weight:600;font-size:1.2rem;
+  color:#FFF;text-decoration:none}
+.brand svg{flex:none;filter:drop-shadow(0 0 7px rgba(180,156,255,.7))}
+.nav a.back{color:var(--purple-lit);text-decoration:none;font-size:.9rem}
+.nav a.back:hover{color:#FFF}
+main{padding:60px 0 90px}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(1.9rem,4.4vw,2.5rem);color:#FFF;
+  letter-spacing:-.018em;margin-bottom:.35rem}
+.updated{color:var(--faint);font-family:var(--mono);font-size:.78rem;letter-spacing:.06em;margin-bottom:2.4rem}
+.sub{color:var(--muted);margin-bottom:2rem;max-width:62ch;font-size:1.03rem}
+h2{font-family:var(--serif);font-weight:600;font-size:1.24rem;color:var(--star);margin:2.4rem 0 .6rem;
+  letter-spacing:-.01em}
+p,li{color:var(--muted);font-size:.98rem;max-width:66ch}
+p strong,li strong{color:var(--star);font-weight:600}
+p+p{margin-top:.85rem}
+ul{padding-left:1.25em;display:flex;flex-direction:column;gap:.5rem;margin:.7rem 0}
+li::marker{color:var(--purple-lit)}
+a{color:var(--purple-lit)}
+a:focus-visible,summary:focus-visible{outline:2.5px solid var(--purple-lit);outline-offset:3px;border-radius:6px}
+.note,.contact{background:var(--panel);border:1px solid var(--line);border-radius:16px;
+  padding:18px 20px;margin:1.6rem 0;backdrop-filter:blur(10px)}
+.note p,.contact p{color:var(--text);font-size:.95rem}
+details{border-bottom:1px solid var(--line);padding:18px 2px}
+summary{cursor:pointer;font-weight:600;font-size:1rem;list-style:none;display:flex;
+  justify-content:space-between;gap:16px;color:var(--star)}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--purple-lit);font-size:1.35rem;line-height:1;transition:transform .25s}
 details[open] summary::after{transform:rotate(45deg)}
-details p{margin-top:.6rem;color:var(--ink-soft);font-size:.94rem;max-width:62ch}
-summary:focus-visible{outline:3px solid var(--lumen);outline-offset:2px;border-radius:4px}
-footer{border-top:1px solid var(--line);padding:28px 0;font-size:.85rem;color:var(--ink-soft)}
+details p{margin-top:.65rem;font-size:.95rem;max-width:64ch}
+footer.site{border-top:1px solid var(--line);padding:30px 0;font-size:.85rem;color:var(--faint);
+  background:rgba(8,4,26,.6)}
 footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
-footer a{color:var(--ink-soft)}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--purple-lit)}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.001s !important}}
 </style>
 </head>
 <body>
-<header>
+<canvas id="sky" aria-hidden="true"></canvas>
+<div id="nebula" aria-hidden="true"></div>
+<div class="page">
+<header class="site">
   <div class="wrap nav">
-    <a class="brand" href="index.html"><svg width="22" height="22" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="7" fill="var(--lumen-bright)"/><g stroke="var(--lumen-bright)" stroke-width="2.6" stroke-linecap="round"><path d="M16 2v5M16 25v5M2 16h5M25 16h5M6 6l3.5 3.5M22.5 22.5L26 26M26 6l-3.5 3.5M9.5 22.5L6 26"/></g></svg>Lumis</a>
-    <a class="back" href="index.html">← Back to lumisapp.org</a>
+    <a class="brand" href="index.html"><svg width="23" height="23" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="7" fill="#B49CFF"/><g stroke="#B49CFF" stroke-width="2.6" stroke-linecap="round"><path d="M16 2v5M16 25v5M2 16h5M25 16h5M6 6l3.5 3.5M22.5 22.5L26 26M26 6l-3.5 3.5M9.5 22.5L6 26"/></g></svg>Lumis</a>
+    <a class="back" href="index.html">&larr; Back to lumisapp.org</a>
   </div>
 </header>
 <main>
   <div class="wrap">
-    <h1 class="display">Support</h1>
-    <p class="sub">Stuck on something? Most answers are below — and a real person (one of the two of us who built Lumis) reads every email.</p>
+    <h1>Support</h1>
+    <p class="sub">Stuck on something? Most answers are below &mdash; and a real person (one of the two of us who built Lumis) reads every email.</p>
 
     <div class="contact">
-      <p><strong>Email us:</strong> <a href="mailto:support@lumisapp.org">support@lumisapp.org</a> — we aim to reply within 1–2 days, faster during term time. Include your device model and what you were doing when the problem happened.</p>
+      <p><strong>Email us:</strong> <a href="mailto:support@lumisapp.org">support@lumisapp.org</a> &mdash; we aim to reply within 1&ndash;2 days, faster during term time. Include your device model and what you were doing when the problem happened.</p>
     </div>
 
     <h2>Common questions</h2>
     <details>
       <summary>My syllabus didn't scan correctly</summary>
-      <p>Try uploading the original PDF or DOCX instead of a photo — file uploads parse more reliably than pictures. If a photo is all you have, good lighting and a flat page help. Any missed or wrong deadline can be edited by hand, and emailing the syllabus to support helps us make the scanner smarter.</p>
+      <p>Try uploading the original PDF or DOCX instead of a photo &mdash; file uploads parse more reliably than pictures. If a photo is all you have, good lighting and a flat page help. Any missed or wrong deadline can be edited by hand, and emailing the syllabus to support helps us make the scanner smarter.</p>
+    </details>
+    <details>
+      <summary>What kinds of course files can I upload?</summary>
+      <p>Beyond the syllabus: lecture notes, slide decks, readings, handouts, lab manuals, and past problem sets, as PDFs, Word documents, or photos. Everything you add goes into that course's material so its flashcards, quizzes, and explanations match what your class actually covers. You can remove any individual file from the course at any time.</p>
     </details>
     <details>
       <summary>I'm not getting reminders</summary>
-      <p>Check Settings → Notifications → Lumis on your iPhone and make sure notifications are allowed. If you have a very full semester, note that iOS limits pending notifications per app — Lumis prioritizes your nearest deadlines automatically.</p>
+      <p>Check Settings &rarr; Notifications &rarr; Lumis on your iPhone and make sure notifications are allowed. If you have a very full semester, note that iOS limits pending notifications per app &mdash; Lumis prioritizes your nearest deadlines automatically.</p>
     </details>
     <details>
       <summary>How do I restore my Premium purchase?</summary>
@@ -66,23 +107,60 @@ footer a{color:var(--ink-soft)}
     </details>
     <details>
       <summary>How do I cancel Premium?</summary>
-      <p>Subscriptions are managed by Apple: Settings → your name → Subscriptions → Lumis → Cancel. Your Premium features stay active until the end of the paid period. During a free trial, cancelling means you won't be charged.</p>
+      <p>Subscriptions are managed by Apple: Settings &rarr; your name &rarr; Subscriptions &rarr; Lumis &rarr; Cancel. Your Premium features stay active until the end of the paid period. During a free trial, cancelling means you won't be charged.</p>
     </details>
     <details>
       <summary>How do I delete my account and data?</summary>
       <p>You can delete your account from within the app's settings, or email <a href="mailto:privacy@lumisapp.org">privacy@lumisapp.org</a> from your account email. Deleting the app removes all on-device course data. See the <a href="privacy.html">privacy policy</a> for details.</p>
     </details>
     <details>
+      <summary>How do I get off the waitlist email list?</summary>
+      <p>Reply to any waitlist email and say the word, or write to <a href="mailto:privacy@lumisapp.org">privacy@lumisapp.org</a>. We'll delete your entry &mdash; you don't need an account to ask.</p>
+    </details>
+    <details>
       <summary>Does Lumis work offline?</summary>
-      <p>Your calendar, assignments, notes, and timer all work offline — your data lives on your device. AI features (syllabus scanning, flashcard generation, Lumis AI chat) need an internet connection.</p>
+      <p>Your calendar, assignments, notes, and timer all work offline &mdash; your data lives on your device. AI features (syllabus scanning, flashcard generation, Lumis AI chat) need an internet connection.</p>
     </details>
   </div>
 </main>
-<footer>
+<footer class="site">
   <div class="wrap">
-    <span>© 2026 Coral Code</span>
-    <span><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="index.html">lumisapp.org</a></span>
+    <span>&copy; 2026 Coral Code</span>
+    <span><a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="index.html">lumisapp.org</a></span>
   </div>
 </footer>
+</div>
+<script>
+(function(){
+  var canvas = document.getElementById('sky');
+  if(!canvas) return;
+  var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var ctx = canvas.getContext('2d'), P = [], w = 0, h = 0, dpr = Math.min(devicePixelRatio||1,2);
+  function size(){
+    w = innerWidth; h = innerHeight;
+    canvas.width = w*dpr; canvas.height = h*dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+  }
+  size(); addEventListener('resize', size);
+  for(var i=0;i<70;i++){
+    P.push({x:Math.random(), y:Math.random(), r:.55+Math.random()*1.2,
+      ph:Math.random()*Math.PI*2, sp:.3+Math.random()*.75, depth:.25+Math.random()*.75});
+  }
+  function draw(t){
+    ctx.clearRect(0,0,w,h);
+    var sc = reduced ? 0 : scrollY;
+    for(var i=0;i<P.length;i++){
+      var p = P[i];
+      var Y = (p.y*h - sc*p.depth*.28) % h; if(Y < 0) Y += h;
+      var a = reduced ? .5 : (.22 + .6*(0.5 + 0.5*Math.sin(t*p.sp + p.ph)));
+      ctx.fillStyle = 'rgba(255,255,255,'+a+')';
+      ctx.beginPath(); ctx.arc(p.x*w, Y, p.r*.8, 0, 7); ctx.fill();
+    }
+  }
+  if(reduced){ draw(0); return; }
+  var t = 0;
+  (function frame(){ requestAnimationFrame(frame); t += .016; draw(t); })();
+})();
+</script>
 </body>
 </html>
