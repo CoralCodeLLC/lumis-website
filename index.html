@@ -4,36 +4,26 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Lumis — Your whole semester, illuminated</title>
-<meta name="description" content="Upload your syllabus and Lumis builds your semester: deadlines, study plans, AI flashcards and quizzes. Coming to iPhone this fall.">
+<meta name="description" content="Upload your syllabus and Lumis builds your semester: deadlines, study plans, AI flashcards and quizzes. The one-stop shop for school. Coming to iPhone this fall.">
 <meta property="og:title" content="Lumis: Student Planner">
 <meta property="og:description" content="Drop your syllabi, get your entire semester in 60 seconds — calendar, deadlines, flashcards, and a study plan.">
 <meta property="og:url" content="https://lumisapp.org">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='7' fill='%23EFA83C'/%3E%3Cg stroke='%23EFA83C' stroke-width='2.6' stroke-linecap='round'%3E%3Cpath d='M16 2v5M16 25v5M2 16h5M25 16h5M6 6l3.5 3.5M22.5 22.5L26 26M26 6l-3.5 3.5M9.5 22.5L6 26'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='7' fill='%237D5CFF'/%3E%3Cg stroke='%237D5CFF' stroke-width='2.6' stroke-linecap='round'%3E%3Cpath d='M16 2v5M16 25v5M2 16h5M25 16h5M6 6l3.5 3.5M22.5 22.5L26 26M26 6l-3.5 3.5M9.5 22.5L6 26'/%3E%3C/g%3E%3C/svg%3E">
 <style>
 :root{
-  --paper:#FBF8F1; --ink:#231F35; --ink-soft:#5A5570;
-  --lumen:#D98A1F; --lumen-bright:#EFA83C; --glow:#FFD9A0;
-  --card:#FFFFFF; --line:#E7E0D2; --chip:#F3EDDF;
-  --night:#12101F; --night-2:#1A1730; --night-ink:#F0EDE4; --night-soft:#A9A2C6;
-  --violet:#6E5BD6;
+  --paper:#FFFFFF; --paper-soft:#F8F7FC; --ink:#211A3E; --ink-soft:#5D5878;
+  --purple:#6C4BE0; --purple-bright:#7D5CFF; --purple-deep:#4A35A8;
+  --lavender:#EFECFC; --line:#E7E4F3; --card:#FFFFFF;
+  --night:#1B1345; --night-2:#2B2060; --star:#CFC4FF; --night-ink:#FFFFFF; --night-soft:#CDC5F0;
 }
-@media (prefers-color-scheme: dark){
-  :root{--paper:#141224;--ink:#F0EDE4;--ink-soft:#A9A4BE;--lumen:#EFA83C;
-    --card:#1E1B33;--line:#332F4C;--chip:#2A2643}
-}
-:root[data-theme="dark"]{--paper:#141224;--ink:#F0EDE4;--ink-soft:#A9A4BE;--lumen:#EFA83C;
-  --card:#1E1B33;--line:#332F4C;--chip:#2A2643}
-:root[data-theme="light"]{--paper:#FBF8F1;--ink:#231F35;--ink-soft:#5A5570;--lumen:#D98A1F;
-  --card:#FFFFFF;--line:#E7E0D2;--chip:#F3EDDF}
-
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 .display{font-family:"Iowan Old Style",Palatino,"Palatino Linotype","Book Antiqua",Georgia,serif}
 .wrap{max-width:1100px;margin:0 auto;padding:0 24px}
-a{color:var(--lumen)}
-a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--lumen-bright);outline-offset:3px;border-radius:6px}
+a{color:var(--purple)}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--purple-bright);outline-offset:3px;border-radius:6px}
 
 /* ============ scroll reveal ============ */
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.65,.25,1),transform .7s cubic-bezier(.2,.65,.25,1)}
@@ -48,112 +38,124 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 
 /* ============ nav ============ */
 header.site{position:fixed;inset:0 0 auto 0;z-index:60;transition:background .35s,box-shadow .35s,border-color .35s;border-bottom:1px solid transparent}
-header.site.scrolled{background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(12px);border-color:var(--line);box-shadow:0 4px 24px rgba(20,15,45,.06)}
+header.site.scrolled{background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-color:var(--line);box-shadow:0 4px 24px rgba(40,25,90,.07)}
 .nav{display:flex;align-items:center;gap:28px;height:68px}
-.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.18rem;text-decoration:none;color:#FFF;transition:color .35s}
+.brand{display:flex;align-items:center;gap:10px;font-weight:750;font-size:1.18rem;text-decoration:none;color:#FFF;transition:color .35s}
 header.site.scrolled .brand{color:var(--ink)}
-.brand svg{flex:none;filter:drop-shadow(0 0 6px color-mix(in srgb,var(--lumen-bright) 55%,transparent))}
+.brand svg{flex:none;filter:drop-shadow(0 0 6px rgba(125,92,255,.5))}
 .nav nav{display:flex;gap:24px;margin-left:auto}
-.nav nav a{color:rgba(255,255,255,.75);text-decoration:none;font-size:.92rem;transition:color .25s}
+.nav nav a{color:rgba(255,255,255,.85);text-decoration:none;font-size:.92rem;font-weight:500;transition:color .25s}
 header.site.scrolled .nav nav a{color:var(--ink-soft)}
-.nav nav a:hover{color:var(--lumen-bright)}
-.btn{display:inline-block;background:linear-gradient(120deg,var(--lumen-bright),#F7C566);color:#231F35;font-weight:700;text-decoration:none;
+.nav nav a:hover{color:var(--purple-bright)}
+.btn{display:inline-block;background:linear-gradient(120deg,var(--purple-bright),#9D7FFF);color:#FFF;font-weight:700;text-decoration:none;
   padding:.72rem 1.4rem;border-radius:999px;border:none;font-size:.95rem;cursor:pointer;position:relative;
-  transition:transform .2s,box-shadow .25s;box-shadow:0 4px 20px color-mix(in srgb,var(--lumen-bright) 40%,transparent)}
-.btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px color-mix(in srgb,var(--lumen-bright) 55%,transparent)}
+  transition:transform .2s,box-shadow .25s;box-shadow:0 4px 20px rgba(125,92,255,.38)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(125,92,255,.5)}
 .btn:active{transform:translateY(0)}
-.btn.ghost{background:transparent;color:#FFF;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.4)}
-.btn.ghost:hover{box-shadow:inset 0 0 0 1.5px var(--lumen-bright);color:var(--lumen-bright)}
+.btn.ghost{background:transparent;color:#FFF;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.55)}
+.btn.ghost:hover{box-shadow:inset 0 0 0 1.5px #FFF;color:#FFF}
 @media(max-width:760px){.nav nav{display:none}}
 
-/* ============ hero (committed night, both themes) ============ */
+/* ============ hero — starry purple, high contrast ============ */
 .hero{position:relative;min-height:100svh;display:flex;align-items:center;color:var(--night-ink);
-  background:radial-gradient(120% 90% at 70% 0%,#241E44 0%,var(--night-2) 45%,var(--night) 100%);overflow:hidden;padding:110px 0 80px}
-#lights{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-.aurora{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;pointer-events:none;will-change:transform}
-.aurora.a1{width:640px;height:460px;left:-160px;top:-120px;background:radial-gradient(circle,rgba(110,91,214,.55),transparent 65%);animation:drift1 26s ease-in-out infinite alternate}
-.aurora.a2{width:720px;height:520px;right:-200px;top:8%;background:radial-gradient(circle,rgba(239,168,60,.38),transparent 65%);animation:drift2 32s ease-in-out infinite alternate}
-.aurora.a3{width:520px;height:420px;left:28%;bottom:-220px;background:radial-gradient(circle,rgba(255,217,160,.22),transparent 65%);animation:drift1 38s ease-in-out infinite alternate-reverse}
-@keyframes drift1{from{transform:translate(0,0) scale(1)}to{transform:translate(70px,50px) scale(1.15)}}
-@keyframes drift2{from{transform:translate(0,0) scale(1.05)}to{transform:translate(-80px,40px) scale(.95)}}
+  background:
+    radial-gradient(90% 70% at 75% 10%,rgba(125,92,255,.45),transparent 60%),
+    radial-gradient(70% 60% at 15% 85%,rgba(108,75,224,.35),transparent 65%),
+    linear-gradient(170deg,var(--night-2) 0%,var(--night) 70%);
+  overflow:hidden;padding:110px 0 80px}
+#stars{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .hero .wrap{position:relative;display:grid;grid-template-columns:1.08fr .92fr;gap:60px;align-items:center;z-index:2}
 @media(max-width:880px){.hero .wrap{grid-template-columns:1fr;gap:44px}.hero{min-height:0;padding-top:120px}}
-.eyebrow{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--lumen-bright);font-weight:700}
-h1{font-size:clamp(2.6rem,6vw,4.2rem);line-height:1.05;letter-spacing:-.02em;margin:.7rem 0 1.2rem;text-wrap:balance;font-weight:600}
+.eyebrow{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--purple);font-weight:750}
+.hero .eyebrow{color:#C9B8FF}
+h1{font-size:clamp(2.6rem,6vw,4.1rem);line-height:1.06;letter-spacing:-.02em;margin:.7rem 0 1.2rem;text-wrap:balance;font-weight:600;color:#FFF}
 h1 .w{display:inline-block;opacity:0;transform:translateY(.55em) rotate(1.5deg);animation:wordUp .8s cubic-bezier(.2,.7,.2,1) forwards}
 h1 .w:nth-child(2){animation-delay:.08s}h1 .w:nth-child(3){animation-delay:.16s}h1 .w:nth-child(4){animation-delay:.24s}
 @keyframes wordUp{to{opacity:1;transform:none}}
-h1 em{font-style:normal;color:var(--lumen-bright);position:relative;
-  background:linear-gradient(100deg,var(--lumen-bright) 30%,#FFE7BC 50%,var(--lumen-bright) 70%);
+h1 em{font-style:normal;
+  background:linear-gradient(100deg,#C9B8FF 30%,#FFFFFF 50%,#C9B8FF 70%);
   background-size:220% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
   animation:shimmer 4.5s ease-in-out 1.2s infinite}
 @keyframes shimmer{0%,100%{background-position:120% 0}45%,55%{background-position:-20% 0}}
-.lede{font-size:1.18rem;color:var(--night-soft);max-width:33em;margin-bottom:2rem;opacity:0;animation:fadeUp .8s ease .45s forwards}
+.lede{font-size:1.18rem;color:#E4DFFA;max-width:33em;margin-bottom:2rem;opacity:0;animation:fadeUp .8s ease .45s forwards}
 .hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center;opacity:0;animation:fadeUp .8s ease .6s forwards}
-.hero-note{font-size:.86rem;color:var(--night-soft);margin-top:1rem;opacity:0;animation:fadeUp .8s ease .75s forwards}
+.hero-note{font-size:.88rem;color:#CDC5F0;margin-top:1rem;opacity:0;animation:fadeUp .8s ease .75s forwards}
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-.scroll-hint{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:2;color:var(--night-soft);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeUp 1s ease 1.4s forwards}
-.scroll-hint::after{content:"";width:1.5px;height:34px;background:linear-gradient(var(--lumen-bright),transparent);animation:beam 1.8s ease-in-out infinite}
+.scroll-hint{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:2;color:#CDC5F0;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeUp 1s ease 1.4s forwards}
+.scroll-hint::after{content:"";width:1.5px;height:34px;background:linear-gradient(#C9B8FF,transparent);animation:beam 1.8s ease-in-out infinite}
 @keyframes beam{0%{transform:scaleY(.2);transform-origin:top;opacity:0}40%{transform:scaleY(1);opacity:1}100%{transform:scaleY(1);transform-origin:top;opacity:0}}
 @media(max-width:880px){.scroll-hint{display:none}}
 
-/* phone */
+/* ============ phone mockup — looks like the app ============ */
 .phone-stage{perspective:1200px}
-.phone{width:300px;margin:0 auto;background:#0D0B18;border-radius:44px;padding:12px;position:relative;
+.phone{width:302px;margin:0 auto;background:#14102B;border-radius:46px;padding:11px;position:relative;
   transform:rotateY(-8deg) rotateX(4deg);transform-style:preserve-3d;transition:transform .35s ease;
-  box-shadow:0 40px 90px rgba(0,0,0,.55),0 0 0 1.5px rgba(255,217,160,.28),0 0 60px rgba(239,168,60,.14);
+  box-shadow:0 40px 90px rgba(10,5,40,.6),0 0 0 1.5px rgba(201,184,255,.35),0 0 60px rgba(125,92,255,.25);
   animation:float 7s ease-in-out infinite}
 @keyframes float{0%,100%{translate:0 0}50%{translate:0 -14px}}
 .phone::after{content:"";position:absolute;inset:-40px;border-radius:60px;z-index:-1;
-  background:radial-gradient(circle at 50% 45%,rgba(239,168,60,.22),transparent 65%)}
-.screen{background:linear-gradient(180deg,#201C38,#151226);border-radius:34px;padding:22px 16px 24px;color:#EFEBFF;min-height:530px}
-.scr-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px}
-.scr-title{font-weight:700;font-size:1.08rem}
-.scr-term{font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:#9C93C9}
-.scan{font-size:.72rem;color:#CFC6F2;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:8px 10px;margin:12px 0;display:flex;gap:8px;align-items:center}
-.scan .dot{width:7px;height:7px;border-radius:50%;background:var(--lumen-bright);box-shadow:0 0 8px var(--lumen-bright);animation:pulse 2.2s infinite}
+  background:radial-gradient(circle at 50% 45%,rgba(125,92,255,.28),transparent 65%)}
+.screen{background:#FBFAFF;border-radius:36px;min-height:540px;color:var(--ink);display:flex;flex-direction:column;overflow:hidden;font-size:.72rem}
+.statusbar{display:flex;justify-content:space-between;padding:10px 20px 2px;font-size:.62rem;font-weight:700;color:var(--ink)}
+.app-head{display:flex;justify-content:space-between;align-items:center;padding:8px 16px 6px}
+.app-logo{display:flex;align-items:center;gap:6px;font-weight:800;font-size:.95rem;color:var(--purple)}
+.app-date{font-size:.6rem;color:var(--ink-soft);font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.scan{margin:6px 12px;font-size:.66rem;color:var(--purple-deep);background:var(--lavender);border:1px solid #DED6FA;border-radius:11px;padding:8px 10px;display:flex;gap:8px;align-items:center;font-weight:600}
+.scan .dot{width:7px;height:7px;flex:none;border-radius:50%;background:var(--purple-bright);box-shadow:0 0 8px var(--purple-bright);animation:pulse 2.2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin-top:8px}
-.cal .dow{font-size:.55rem;text-align:center;color:#8D84BC;letter-spacing:.06em}
-.cal .day{aspect-ratio:1;border-radius:7px;background:#242043;font-size:.6rem;display:flex;align-items:center;justify-content:center;color:#B7AFE0;font-variant-numeric:tabular-nums}
-.cal .day.lit{background:var(--lumen-bright);color:#231F35;font-weight:700;animation:lightUp .55s both}
-.cal .day.l2{animation-delay:.4s}.cal .day.l3{animation-delay:.8s}.cal .day.l4{animation-delay:1.2s}.cal .day.l5{animation-delay:1.6s}
-@keyframes lightUp{from{background:#242043;color:#B7AFE0;box-shadow:none}to{background:var(--lumen-bright);color:#231F35;box-shadow:0 0 16px rgba(239,168,60,.65)}}
-.due{margin-top:14px;display:flex;flex-direction:column;gap:8px}
-.due .item{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:8px 10px;font-size:.72rem;display:flex;justify-content:space-between;gap:8px}
-.due .item span:last-child{color:#9C93C9;font-variant-numeric:tabular-nums;white-space:nowrap}
-.due .item.hot{border-left:3px solid var(--lumen-bright)}
+.week{display:flex;justify-content:space-between;padding:8px 16px 2px}
+.week .d{width:30px;text-align:center;color:var(--ink-soft)}
+.week .d span{display:block;font-size:.55rem;letter-spacing:.04em}
+.week .d b{display:block;width:24px;height:24px;line-height:24px;margin:3px auto 0;border-radius:50%;font-size:.62rem;color:var(--ink);font-variant-numeric:tabular-nums;font-weight:600}
+.week .d.lit b{background:var(--purple-bright);color:#FFF;font-weight:700;animation:lightUp .5s both}
+.week .d.l2 b{animation-delay:.4s}.week .d.l3 b{animation-delay:.8s}.week .d.l4 b{animation-delay:1.2s}
+@keyframes lightUp{from{background:transparent;color:var(--ink);box-shadow:none}to{background:var(--purple-bright);color:#FFF;box-shadow:0 0 12px rgba(125,92,255,.6)}}
+.sect-label{padding:10px 16px 4px;font-size:.6rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+.tasks{display:flex;flex-direction:column;gap:7px;padding:0 12px}
+.task{background:#FFF;border:1px solid var(--line);border-left:4px solid var(--purple-bright);border-radius:11px;padding:8px 10px;display:flex;justify-content:space-between;align-items:center;gap:8px;box-shadow:0 2px 8px rgba(40,25,90,.05)}
+.task.c2{border-left-color:#3FB68B}.task.c3{border-left-color:#E8913C}
+.task .t{font-weight:650;font-size:.68rem}
+.task .t small{display:block;font-weight:500;color:var(--ink-soft);font-size:.58rem}
+.task .w{flex:none;background:var(--lavender);color:var(--purple-deep);font-weight:750;font-size:.56rem;border-radius:999px;padding:3px 7px;font-variant-numeric:tabular-nums}
+.stats{display:flex;gap:8px;padding:10px 12px 4px}
+.stat{flex:1;background:#FFF;border:1px solid var(--line);border-radius:11px;padding:7px 9px;box-shadow:0 2px 8px rgba(40,25,90,.05)}
+.stat b{display:block;font-size:.8rem;color:var(--purple);font-variant-numeric:tabular-nums}
+.stat span{font-size:.55rem;color:var(--ink-soft);font-weight:600}
+.tabbar{margin-top:auto;display:flex;justify-content:space-around;align-items:center;border-top:1px solid var(--line);padding:8px 6px 14px;background:#FFF}
+.tab{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:.5rem;font-weight:650;color:#9A93B8}
+.tab svg{width:17px;height:17px;stroke:#9A93B8}
+.tab.on{color:var(--purple)}
+.tab.on svg{stroke:var(--purple)}
 
-/* ============ marquee ============ */
-.marquee{background:var(--night);border-top:1px solid rgba(255,255,255,.06);padding:16px 0;overflow:hidden;position:relative}
+/* ============ marquee — light strip ============ */
+.marquee{background:var(--paper-soft);border-block:1px solid var(--line);padding:15px 0;overflow:hidden;position:relative}
 .marquee::before,.marquee::after{content:"";position:absolute;top:0;bottom:0;width:90px;z-index:2;pointer-events:none}
-.marquee::before{left:0;background:linear-gradient(90deg,var(--night),transparent)}
-.marquee::after{right:0;background:linear-gradient(-90deg,var(--night),transparent)}
+.marquee::before{left:0;background:linear-gradient(90deg,var(--paper-soft),transparent)}
+.marquee::after{right:0;background:linear-gradient(-90deg,var(--paper-soft),transparent)}
 .mq-track{display:flex;gap:14px;width:max-content;animation:mq 36s linear infinite}
 .marquee:hover .mq-track{animation-play-state:paused}
 @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.mq-chip{flex:none;display:flex;gap:8px;align-items:center;font-size:.78rem;color:#CFC6F2;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:999px;padding:7px 14px}
-.mq-chip b{color:var(--lumen-bright);font-weight:700}
+.mq-chip{flex:none;display:flex;gap:8px;align-items:center;font-size:.78rem;color:var(--ink-soft);background:#FFF;border:1px solid var(--line);border-radius:999px;padding:7px 14px}
+.mq-chip b{color:var(--purple);font-weight:700}
 
 /* ============ sections ============ */
 section{padding:96px 0;position:relative}
-section.alt{background:color-mix(in srgb,var(--card) 55%,var(--paper));border-block:1px solid var(--line)}
+section.alt{background:var(--paper-soft);border-block:1px solid var(--line)}
 h2{font-size:clamp(1.8rem,3.6vw,2.5rem);letter-spacing:-.015em;margin-bottom:.55rem;text-wrap:balance;font-weight:600}
 .sub{color:var(--ink-soft);max-width:40em;margin-bottom:2.6rem;font-size:1.04rem}
 .center{text-align:center}.center .sub{margin-inline:auto}
-.beam-divider{height:1px;max-width:1100px;margin:0 auto;background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--lumen-bright) 55%,transparent),transparent)}
+.beam-divider{height:1px;max-width:1100px;margin:0 auto;background:linear-gradient(90deg,transparent,rgba(125,92,255,.55),transparent)}
 
 /* how it works */
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;counter-reset:step}
 @media(max-width:820px){.steps{grid-template-columns:1fr}}
 .step{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:30px 26px;position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s}
-.step:hover{transform:translateY(-4px);box-shadow:0 16px 44px rgba(30,20,60,.10)}
+.step:hover{transform:translateY(-4px);box-shadow:0 16px 44px rgba(60,40,140,.10)}
 .step::before{counter-increment:step;content:counter(step,decimal-leading-zero);position:absolute;right:14px;top:4px;
-  font-family:"Iowan Old Style",Palatino,Georgia,serif;font-size:4.4rem;font-weight:600;line-height:1;
-  color:color-mix(in srgb,var(--lumen-bright) 16%,transparent)}
+  font-family:"Iowan Old Style",Palatino,Georgia,serif;font-size:4.4rem;font-weight:600;line-height:1;color:rgba(125,92,255,.13)}
 .step h3{font-size:1.12rem;margin-bottom:.45rem;position:relative}
 .step p{font-size:.95rem;color:var(--ink-soft);position:relative}
-.step .glyph{width:44px;height:44px;border-radius:13px;background:var(--chip);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.step .glyph{width:44px;height:44px;border-radius:13px;background:var(--lavender);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
 
 /* features — spotlight cards */
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
@@ -161,10 +163,10 @@ h2{font-size:clamp(1.8rem,3.6vw,2.5rem);letter-spacing:-.015em;margin-bottom:.55
 @media(max-width:560px){.grid{grid-template-columns:1fr}}
 .feat{--mx:50%;--my:50%;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px;position:relative;overflow:hidden;transition:transform .22s,border-color .22s,box-shadow .22s}
 .feat::before{content:"";position:absolute;inset:0;opacity:0;transition:opacity .3s;pointer-events:none;
-  background:radial-gradient(240px circle at var(--mx) var(--my),color-mix(in srgb,var(--lumen-bright) 14%,transparent),transparent 70%)}
-.feat:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--lumen-bright) 45%,var(--line));box-shadow:0 18px 44px rgba(30,20,60,.12)}
+  background:radial-gradient(240px circle at var(--mx) var(--my),rgba(125,92,255,.13),transparent 70%)}
+.feat:hover{transform:translateY(-4px);border-color:rgba(125,92,255,.5);box-shadow:0 18px 44px rgba(60,40,140,.12)}
 .feat:hover::before{opacity:1}
-.feat .ico{width:42px;height:42px;border-radius:12px;background:var(--chip);display:flex;align-items:center;justify-content:center;margin-bottom:15px;transition:transform .25s}
+.feat .ico{width:42px;height:42px;border-radius:12px;background:var(--lavender);display:flex;align-items:center;justify-content:center;margin-bottom:15px;transition:transform .25s}
 .feat:hover .ico{transform:scale(1.1) rotate(-4deg)}
 .feat h3{font-size:1.04rem;margin-bottom:.35rem}
 .feat p{font-size:.91rem;color:var(--ink-soft)}
@@ -173,57 +175,62 @@ h2{font-size:clamp(1.8rem,3.6vw,2.5rem);letter-spacing:-.015em;margin-bottom:.55
 .plans{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:780px;margin:0 auto}
 @media(max-width:680px){.plans{grid-template-columns:1fr}}
 .plan{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:32px;transition:transform .25s,box-shadow .25s}
-.plan:hover{transform:translateY(-4px);box-shadow:0 18px 44px rgba(30,20,60,.10)}
+.plan:hover{transform:translateY(-4px);box-shadow:0 18px 44px rgba(60,40,140,.10)}
 .plan.pro{position:relative;border:1.5px solid transparent;
   background:linear-gradient(var(--card),var(--card)) padding-box,
-  linear-gradient(140deg,var(--lumen-bright),#F7C566 40%,var(--violet)) border-box}
-.plan .tag{position:absolute;top:-13px;left:28px;background:linear-gradient(120deg,var(--lumen-bright),#F7C566);color:#231F35;font-size:.72rem;font-weight:750;letter-spacing:.08em;text-transform:uppercase;padding:4px 13px;border-radius:999px;box-shadow:0 4px 14px color-mix(in srgb,var(--lumen-bright) 45%,transparent)}
+  linear-gradient(140deg,var(--purple-bright),#B49CFF 50%,var(--purple-deep)) border-box}
+.plan .tag{position:absolute;top:-13px;left:28px;background:linear-gradient(120deg,var(--purple-bright),#9D7FFF);color:#FFF;font-size:.72rem;font-weight:750;letter-spacing:.08em;text-transform:uppercase;padding:4px 13px;border-radius:999px;box-shadow:0 4px 14px rgba(125,92,255,.45)}
 .plan h3{font-size:1.3rem;margin-bottom:.2rem}
 .plan .price{font-size:1rem;color:var(--ink-soft);margin-bottom:1.2rem}
 .plan ul{list-style:none;display:flex;flex-direction:column;gap:.6rem;font-size:.94rem}
 .plan li{padding-left:1.5em;position:relative}
-.plan li::before{content:"✦";position:absolute;left:0;color:var(--lumen);font-size:.8em;top:.24em}
+.plan li::before{content:"✦";position:absolute;left:0;color:var(--purple);font-size:.8em;top:.24em}
 .fineprint{text-align:center;color:var(--ink-soft);font-size:.83rem;margin-top:1.7rem}
 
-/* about */
+/* our story */
 .about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:start}
 @media(max-width:820px){.about-grid{grid-template-columns:1fr}}
 .about p{margin-bottom:1rem;color:var(--ink-soft);font-size:1.02rem}
 .about p strong{color:var(--ink)}
 .founders{display:flex;flex-direction:column;gap:16px}
-.founder{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;display:flex;gap:16px;align-items:center;transition:transform .22s,border-color .22s}
-.founder:hover{transform:translateX(6px);border-color:color-mix(in srgb,var(--lumen-bright) 45%,var(--line))}
+.founder{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;display:flex;gap:16px;align-items:flex-start;transition:transform .22s,border-color .22s}
+.founder:hover{transform:translateX(6px);border-color:rgba(125,92,255,.5)}
 .founder .avatar{width:54px;height:54px;flex:none;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:750;font-size:1.2rem;
-  background:radial-gradient(circle at 30% 30%,#F7C566,var(--lumen-bright));color:#231F35}
+  background:radial-gradient(circle at 30% 30%,#9D7FFF,var(--purple));color:#FFF}
 .founder h4{font-size:1.02rem}
-.founder p{font-size:.87rem;color:var(--ink-soft)}
-.coral{margin-top:18px;font-size:.88rem;color:var(--ink-soft);border-left:3px solid var(--lumen-bright);padding-left:14px}
+.founder h4 span{font-weight:500;color:var(--ink-soft);font-size:.85rem}
+.founder p{font-size:.89rem;color:var(--ink-soft);margin-top:.25rem}
+.coral{margin-top:18px;font-size:.9rem;color:var(--ink-soft);border-left:3px solid var(--purple-bright);border-radius:0 12px 12px 0;padding:12px 14px;background:var(--paper)}
 
 /* faq */
 .faq{max-width:740px;margin:0 auto}
 details{border-bottom:1px solid var(--line);padding:19px 4px}
 summary{cursor:pointer;font-weight:650;font-size:1.04rem;list-style:none;display:flex;justify-content:space-between;gap:16px}
 summary::-webkit-details-marker{display:none}
-summary::after{content:"+";color:var(--lumen);font-size:1.35rem;line-height:1;transition:transform .25s}
+summary::after{content:"+";color:var(--purple);font-size:1.35rem;line-height:1;transition:transform .25s}
 details[open] summary::after{transform:rotate(45deg)}
 details p{margin-top:.7rem;color:var(--ink-soft);font-size:.96rem;max-width:60ch}
 
-/* waitlist — night again */
-.waitlist-sec{padding:110px 0 120px;background:radial-gradient(110% 100% at 50% 115%,#2A2350 0%,var(--night-2) 55%,var(--night) 100%);position:relative;overflow:hidden;color:var(--night-ink)}
-#lights2{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+/* waitlist — starry purple, readable */
+.waitlist-sec{padding:110px 0 120px;position:relative;overflow:hidden;color:var(--night-ink);
+  background:
+    radial-gradient(80% 70% at 50% 115%,rgba(125,92,255,.5),transparent 65%),
+    linear-gradient(180deg,var(--night-2),var(--night))}
+#stars2{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .waitlist-sec .wrap{position:relative;z-index:2;text-align:center}
 .waitlist-sec h2{color:#FFF}
-.waitlist-sec .sub{color:var(--night-soft);margin-inline:auto}
+.waitlist-sec .eyebrow{color:#C9B8FF}
+.waitlist-sec .sub{color:#E4DFFA;margin-inline:auto}
 .waitlist-sec .btn{animation:breathe 3.4s ease-in-out infinite}
-@keyframes breathe{0%,100%{box-shadow:0 4px 22px rgba(239,168,60,.35)}50%{box-shadow:0 6px 42px rgba(239,168,60,.65)}}
-.alt-mail{display:block;margin-top:1.1rem;font-size:.86rem;color:var(--night-soft)}
-.alt-mail a{color:var(--glow)}
+@keyframes breathe{0%,100%{box-shadow:0 4px 22px rgba(125,92,255,.4)}50%{box-shadow:0 6px 42px rgba(125,92,255,.75)}}
+.alt-mail{display:block;margin-top:1.1rem;font-size:.88rem;color:#CDC5F0}
+.alt-mail a{color:#E4DFFA}
 
 footer.site{border-top:1px solid var(--line);padding:36px 0;font-size:.87rem;color:var(--ink-soft)}
 footer .wrap{display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;align-items:center}
 footer nav{display:flex;gap:20px}
 footer a{color:var(--ink-soft);text-decoration:none}
-footer a:hover{color:var(--lumen)}
+footer a:hover{color:var(--purple)}
 </style>
 </head>
 <body>
@@ -231,7 +238,7 @@ footer a:hover{color:var(--lumen)}
 <header class="site" id="siteHeader">
   <div class="wrap nav">
     <a class="brand" href="#top" aria-label="Lumis home">
-      <svg width="27" height="27" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="7" fill="#EFA83C"/><g stroke="#EFA83C" stroke-width="2.6" stroke-linecap="round"><path d="M16 2v5M16 25v5M2 16h5M25 16h5M6 6l3.5 3.5M22.5 22.5L26 26M26 6l-3.5 3.5M9.5 22.5L6 26"/></g></svg>
+      <svg width="27" height="27" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="7" fill="#9D7FFF"/><g stroke="#9D7FFF" stroke-width="2.6" stroke-linecap="round"><path d="M16 2v5M16 25v5M2 16h5M25 16h5M6 6l3.5 3.5M22.5 22.5L26 26M26 6l-3.5 3.5M9.5 22.5L6 26"/></g></svg>
       Lumis
     </a>
     <nav aria-label="Site">
@@ -249,8 +256,7 @@ footer a:hover{color:var(--lumen)}
 
 <!-- HERO -->
 <section class="hero" id="hero">
-  <canvas id="lights" aria-hidden="true"></canvas>
-  <div class="aurora a1"></div><div class="aurora a2"></div><div class="aurora a3"></div>
+  <canvas id="stars" aria-hidden="true"></canvas>
   <div class="wrap">
     <div>
       <p class="eyebrow">Coming to iPhone · Fall 2026</p>
@@ -264,21 +270,39 @@ footer a:hover{color:var(--lumen)}
     </div>
 
     <div class="phone-stage">
-      <div class="phone" id="phone" role="img" aria-label="Lumis app screen: a syllabus scan filling a semester calendar with deadlines">
+      <div class="phone" id="phone" role="img" aria-label="The Lumis app: today view with scanned syllabus deadlines, week strip, GPA and study stats, and tab bar">
         <div class="screen">
-          <div class="scr-head"><span class="scr-title display">September</span><span class="scr-term">Fall 2026</span></div>
-          <div class="scan"><span class="dot"></span>BIO 201 syllabus scanned — 14 deadlines found</div>
-          <div class="cal">
-            <span class="dow">M</span><span class="dow">T</span><span class="dow">W</span><span class="dow">T</span><span class="dow">F</span><span class="dow">S</span><span class="dow">S</span>
-            <span class="day">1</span><span class="day">2</span><span class="day lit">3</span><span class="day">4</span><span class="day">5</span><span class="day">6</span><span class="day">7</span>
-            <span class="day">8</span><span class="day lit l2">9</span><span class="day">10</span><span class="day">11</span><span class="day lit l3">12</span><span class="day">13</span><span class="day">14</span>
-            <span class="day">15</span><span class="day">16</span><span class="day">17</span><span class="day lit l4">18</span><span class="day">19</span><span class="day">20</span><span class="day">21</span>
-            <span class="day">22</span><span class="day">23</span><span class="day lit l5">24</span><span class="day">25</span><span class="day">26</span><span class="day">27</span><span class="day">28</span>
+          <div class="statusbar"><span>9:41</span><span>🔋</span></div>
+          <div class="app-head">
+            <span class="app-logo"><svg width="16" height="16" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="7" fill="#7D5CFF"/><g stroke="#7D5CFF" stroke-width="2.6" stroke-linecap="round"><path d="M16 2v5M16 25v5M2 16h5M25 16h5M6 6l3.5 3.5M22.5 22.5L26 26M26 6l-3.5 3.5M9.5 22.5L6 26"/></g></svg>Lumis</span>
+            <span class="app-date">Mon · Sep 14</span>
           </div>
-          <div class="due">
-            <div class="item hot"><span>Problem Set 2 · BIO 201</span><span>Wed · 20%</span></div>
-            <div class="item"><span>Reading quiz · HIST 140</span><span>Fri · 5%</span></div>
-            <div class="item"><span>Midterm 1 · BIO 201</span><span>Sep 24 · 25%</span></div>
+          <div class="scan"><span class="dot"></span>BIO 201 syllabus scanned — 14 deadlines added</div>
+          <div class="week">
+            <div class="d"><span>M</span><b>14</b></div>
+            <div class="d lit"><span>T</span><b>15</b></div>
+            <div class="d"><span>W</span><b>16</b></div>
+            <div class="d lit l2"><span>T</span><b>17</b></div>
+            <div class="d"><span>F</span><b>18</b></div>
+            <div class="d lit l3"><span>S</span><b>19</b></div>
+            <div class="d"><span>S</span><b>20</b></div>
+          </div>
+          <div class="sect-label">Up next</div>
+          <div class="tasks">
+            <div class="task"><span class="t">Problem Set 2<small>BIO 201 · Tue</small></span><span class="w">20%</span></div>
+            <div class="task c2"><span class="t">Reading quiz<small>HIST 140 · Thu</small></span><span class="w">5%</span></div>
+            <div class="task c3"><span class="t">Midterm 1<small>BIO 201 · Sep 24</small></span><span class="w">25%</span></div>
+          </div>
+          <div class="stats">
+            <div class="stat"><b>3.71</b><span>GPA on track</span></div>
+            <div class="stat"><b>1h 40m</b><span>Studied today</span></div>
+          </div>
+          <div class="tabbar">
+            <span class="tab on"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M3 11l9-7 9 7v9a1 1 0 01-1 1h-5v-6h-6v6H4a1 1 0 01-1-1z"/></svg>Home</span>
+            <span class="tab"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>Planner</span>
+            <span class="tab"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><rect x="4" y="5" width="16" height="12" rx="2"/><path d="M8 9h8M8 13h5"/></svg>Study</span>
+            <span class="tab"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v3M12 20v3M1 12h3M20 12h3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M19.8 4.2l-2.1 2.1M6.3 17.7l-2.1 2.1"/></svg>Lumis AI</span>
+            <span class="tab"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M21 12a9 9 0 11-9-9"/><path d="M12 7v5l3 3"/></svg>Focus</span>
           </div>
         </div>
       </div>
@@ -301,22 +325,22 @@ footer a:hover{color:var(--lumen)}
 </div>
 
 <!-- HOW IT WORKS -->
-<section id="how" class="alt">
+<section id="how">
   <div class="wrap">
     <p class="eyebrow reveal">How it works</p>
     <h2 class="display reveal d1">Syllabus week, solved in one sitting</h2>
     <p class="sub reveal d2">The syllabus already contains your entire semester. Lumis is the first planner that treats it that way.</p>
     <div class="steps">
       <div class="step reveal d1">
-        <div class="glyph"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--lumen)" stroke-width="2" stroke-linecap="round"><path d="M12 16V4m0 0L7 9m5-5l5 5"/><path d="M4 20h16"/></svg></div>
+        <div class="glyph"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6C4BE0" stroke-width="2" stroke-linecap="round"><path d="M12 16V4m0 0L7 9m5-5l5 5"/><path d="M4 20h16"/></svg></div>
         <h3>Drop your syllabi</h3><p>Snap a photo or upload the PDF or DOCX for each course — all of them, right during syllabus week.</p>
       </div>
       <div class="step reveal d2">
-        <div class="glyph"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--lumen)" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+        <div class="glyph"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6C4BE0" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
         <h3>Lumis reads every line</h3><p>AI extracts each assignment, quiz, exam, reading, and grading weight — even the schedule buried in a table on page six.</p>
       </div>
       <div class="step reveal d3">
-        <div class="glyph"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--lumen)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v3M12 20v3M1 12h3M20 12h3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M19.8 4.2l-2.1 2.1M6.3 17.7l-2.1 2.1"/></svg></div>
+        <div class="glyph"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6C4BE0" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v3M12 20v3M1 12h3M20 12h3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M19.8 4.2l-2.1 2.1M6.3 17.7l-2.1 2.1"/></svg></div>
         <h3>Your semester appears</h3><p>A unified calendar, per-course trackers, smart reminders, and study tools generated from your real course material.</p>
       </div>
     </div>
@@ -324,26 +348,24 @@ footer a:hover{color:var(--lumen)}
 </section>
 
 <!-- FEATURES -->
-<section id="features">
+<section id="features" class="alt">
   <div class="wrap">
     <p class="eyebrow reveal">Features</p>
     <h2 class="display reveal d1">A planner that also studies with you</h2>
     <p class="sub reveal d2">Planners know your deadlines but can't teach. Flashcard apps can quiz you but don't know your semester. Lumis does both — from one syllabus upload.</p>
     <div class="grid" id="featGrid">
-      <div class="feat reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--lumen)" stroke-width="2" stroke-linecap="round"><path d="M4 7V4h16v3M9 20h6M12 4v16"/></svg></div><h3>Syllabus scanner</h3><p>Photo or file in — every dated deadline and grade weight out. No more typing your semester in by hand.</p></div>
-      <div class="feat reveal d1"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--lumen)" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg></div><h3>Semester calendar</h3><p>Every course on one calendar with an all-assignments view — and a home-screen widget so today's work finds you.</p></div>
-      <div class="feat reveal d2"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--lumen)" stroke-width="2" stroke-linecap="round"><path d="M12 3l1.9 5.8H20l-4.9 3.6 1.8 5.8-4.9-3.6-4.9 3.6 1.8-5.8L4 8.8h6.1z"/></svg></div><h3>Grade-weighted priorities</h3><p>A 30% final outranks a 2% quiz. Lumis knows what each assignment is worth and plans your effort accordingly.</p></div>
-      <div class="feat reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--lumen)" stroke-width="2" stroke-linecap="round"><rect x="4" y="5" width="16" height="12" rx="2"/><path d="M8 9h8M8 13h5"/></svg></div><h3>AI flashcards &amp; quizzes</h3><p>Decks and practice quizzes generated from your actual course topics and uploaded notes — not someone else's deck.</p></div>
-      <div class="feat reveal d1"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--lumen)" stroke-width="2" stroke-linecap="round"><path d="M21 12a9 9 0 11-9-9"/><path d="M12 7v5l3 3"/></svg></div><h3>Focus &amp; study timer</h3><p>Per-class study sessions, a lock-in Focus tab, and a finals mode for when it's time to buckle down.</p></div>
-      <div class="feat reveal d2"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--lumen)" stroke-width="2" stroke-linecap="round"><path d="M3 17l5-5 4 4 7-8"/><path d="M14 8h5v5"/></svg></div><h3>GPA tracking</h3><p>A live GPA calculator with predictions — see what you need on the final before the final.</p></div>
+      <div class="feat reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6C4BE0" stroke-width="2" stroke-linecap="round"><path d="M4 7V4h16v3M9 20h6M12 4v16"/></svg></div><h3>Syllabus scanner</h3><p>Photo or file in — every dated deadline and grade weight out. No more typing your semester in by hand.</p></div>
+      <div class="feat reveal d1"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6C4BE0" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg></div><h3>Semester calendar</h3><p>Every course on one calendar with an all-assignments view — and a home-screen widget so today's work finds you.</p></div>
+      <div class="feat reveal d2"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6C4BE0" stroke-width="2" stroke-linecap="round"><path d="M12 3l1.9 5.8H20l-4.9 3.6 1.8 5.8-4.9-3.6-4.9 3.6 1.8-5.8L4 8.8h6.1z"/></svg></div><h3>Grade-weighted priorities</h3><p>A 30% final outranks a 2% quiz. Lumis knows what each assignment is worth and plans your effort accordingly.</p></div>
+      <div class="feat reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6C4BE0" stroke-width="2" stroke-linecap="round"><rect x="4" y="5" width="16" height="12" rx="2"/><path d="M8 9h8M8 13h5"/></svg></div><h3>AI flashcards &amp; quizzes</h3><p>Decks and practice quizzes generated from your actual course topics and uploaded notes — not someone else's deck.</p></div>
+      <div class="feat reveal d1"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6C4BE0" stroke-width="2" stroke-linecap="round"><path d="M21 12a9 9 0 11-9-9"/><path d="M12 7v5l3 3"/></svg></div><h3>Focus &amp; study timer</h3><p>Per-class study sessions, a lock-in Focus tab, and a finals mode for when it's time to buckle down.</p></div>
+      <div class="feat reveal d2"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6C4BE0" stroke-width="2" stroke-linecap="round"><path d="M3 17l5-5 4 4 7-8"/><path d="M14 8h5v5"/></svg></div><h3>GPA tracking</h3><p>A live GPA calculator with predictions — see what you need on the final before the final.</p></div>
     </div>
   </div>
 </section>
 
-<div class="beam-divider" aria-hidden="true"></div>
-
 <!-- PRICING -->
-<section id="pricing" class="alt">
+<section id="pricing">
   <div class="wrap">
     <div class="center">
       <p class="eyebrow reveal">Pricing</p>
@@ -378,28 +400,30 @@ footer a:hover{color:var(--lumen)}
   </div>
 </section>
 
-<!-- ABOUT -->
-<section id="about">
+<div class="beam-divider" aria-hidden="true"></div>
+
+<!-- OUR STORY -->
+<section id="about" class="alt">
   <div class="wrap">
     <p class="eyebrow reveal">Our story</p>
-    <h2 class="display reveal d1">Built by two students who were tired of syllabus week</h2>
+    <h2 class="display reveal d1">Two students at the University of Miami who wanted one app for all of it</h2>
     <div class="about-grid" style="margin-top:2rem">
       <div class="about">
-        <p class="reveal d1">Every semester starts the same way: five PDFs, each hiding a different table of deadlines, and an evening lost to copying them into a calendar by hand — hoping you didn't miss the quiz on page six.</p>
-        <p class="reveal d2"><strong>We built Lumis because the syllabus already is your semester.</strong> Someone just had to treat it that way. One upload should produce your calendar, your priorities, and your study materials — and then keep you honest through finals.</p>
-        <p class="reveal d3">Lumis is an independent app, built close to the problem: we're students, we upload our own syllabi, and we test every feature on our own coursework first. No ed-tech giant, no data resale — just a tool we wanted badly enough to build.</p>
-        <p class="coral reveal d4">Lumis is made by <strong>Coral Code</strong>, the two-person software company we founded to build products we wish existed. Lumis is our flagship.</p>
+        <p class="reveal d1">We're Hudson and Jesse — students at the University of Miami and friends who kept having the same conversation every August: why does surviving a semester take five different apps? A calendar for deadlines, a flashcard app for studying, a spreadsheet for grades, a notes app, a timer — and a syllabus buried in PDFs that none of them ever read.</p>
+        <p class="reveal d2"><strong>So we built the tool we actually wanted: everything you need for the semester, in one place.</strong> Upload your syllabi once and Lumis becomes your calendar, your assignment tracker, your flashcards and quizzes, your GPA calculator, your study timer, and your AI tutor — the one-stop shop for school.</p>
+        <p class="reveal d3">We're not an ed-tech giant. We're two students who upload our own syllabi every semester and test every feature on our own classes first. If it doesn't survive a Miami finals week, it doesn't ship.</p>
+        <p class="coral reveal d4">Lumis is built by <strong>Coral Code</strong> — the two-person software company we started to make products we wished existed. Lumis is our flagship, and it's just the beginning.</p>
       </div>
       <div class="founders">
-        <div class="founder reveal d2"><div class="avatar display">H</div><div><h4>Hudson — Co-founder</h4><p>Product, iOS, and the reason the calendar knows a 30% final from a 2% quiz.</p></div></div>
-        <div class="founder reveal d3"><div class="avatar display">J</div><div><h4>Jesse — Co-founder</h4><p>Backend and AI — the engine that reads a messy syllabus and hands you a semester.</p></div></div>
+        <div class="founder reveal d2"><div class="avatar display">H</div><div><h4>Hudson <span>· Co-founder</span></h4><p>Finance student, golfer, and the organized one — the friend whose calendar people borrow before exams. Hudson shapes the product and makes sure Lumis works the way students actually plan.</p></div></div>
+        <div class="founder reveal d3"><div class="avatar display">J</div><div><h4>Jesse <span>· Co-founder</span></h4><p>The engineer of the duo — happiest deep in the code, building the AI engine that turns a messy syllabus PDF into a whole semester. If Lumis feels like magic, that's Jesse's side of the shop.</p></div></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- FAQ -->
-<section id="faq" class="alt">
+<section id="faq">
   <div class="wrap">
     <div class="center">
       <p class="eyebrow reveal">FAQ</p>
@@ -433,13 +457,13 @@ footer a:hover{color:var(--lumen)}
 
 <!-- WAITLIST -->
 <section class="waitlist-sec" id="waitlist">
-  <canvas id="lights2" aria-hidden="true"></canvas>
+  <canvas id="stars2" aria-hidden="true"></canvas>
   <div class="wrap">
     <p class="eyebrow reveal">Get in first</p>
     <h2 class="display reveal d1">Be there when the lights come on</h2>
     <p class="sub reveal d2">Join the waitlist for the first TestFlight invites, launch news, and the early-bird Premium rate.</p>
     <a class="btn reveal d3" href="mailto:hello@lumisapp.org?subject=Lumis%20waitlist">Join the waitlist</a>
-    <span class="alt-mail reveal d4">Prefer email? Write to <a href="mailto:hello@lumisapp.org?subject=Lumis%20waitlist">hello@lumisapp.org</a> and we'll add you.</span>
+    <span class="alt-mail reveal d4">Or write to <a href="mailto:hello@lumisapp.org?subject=Lumis%20waitlist">hello@lumisapp.org</a> and we'll add you.</span>
   </div>
 </section>
 
@@ -447,7 +471,7 @@ footer a:hover{color:var(--lumen)}
 
 <footer class="site">
   <div class="wrap">
-    <span>© 2026 Coral Code · Lumis: Student Planner</span>
+    <span>© 2026 Coral Code · Lumis: Student Planner · Miami, FL</span>
     <nav aria-label="Legal">
       <a href="support.html">Support</a>
       <a href="privacy.html">Privacy</a>
@@ -505,8 +529,8 @@ footer a:hover{color:var(--lumen)}
     });
   });
 
-  /* firefly light-field canvases */
-  function fireflies(canvas, count){
+  /* starfield — brighter, sparser, twinkling */
+  function starfield(canvas, count){
     if(!canvas || reduced) return;
     var ctx = canvas.getContext('2d'), P = [], w, h, dpr = Math.min(devicePixelRatio||1, 2);
     function size(){
@@ -517,10 +541,10 @@ footer a:hover{color:var(--lumen)}
     }
     size(); addEventListener('resize', size);
     for(var i=0;i<count;i++){
-      P.push({x:Math.random(), y:Math.random(), r:.8+Math.random()*1.9,
-        vx:(Math.random()-.5)*.00025, vy:(Math.random()-.5)*.0002,
-        ph:Math.random()*Math.PI*2, sp:.4+Math.random()*.9,
-        warm:Math.random()<.72});
+      P.push({x:Math.random(), y:Math.random(), r:.6+Math.random()*1.4,
+        ph:Math.random()*Math.PI*2, sp:.3+Math.random()*.8,
+        drift:(Math.random()-.5)*.00008,
+        bright:Math.random()<.25});
     }
     var t=0, running=true;
     var vis = new IntersectionObserver(function(en){ running = en[0].isIntersecting; }, {});
@@ -532,25 +556,23 @@ footer a:hover{color:var(--lumen)}
       ctx.clearRect(0,0,w,h);
       for(var i=0;i<P.length;i++){
         var p = P[i];
-        p.x += p.vx + Math.sin(t*.3 + p.ph)*.00006;
-        p.y += p.vy + Math.cos(t*.24 + p.ph)*.00005;
-        if(p.x<-.02) p.x=1.02; if(p.x>1.02) p.x=-.02;
-        if(p.y<-.02) p.y=1.02; if(p.y>1.02) p.y=-.02;
-        var a = .18 + .5*(0.5 + 0.5*Math.sin(t*p.sp + p.ph));
+        p.x += p.drift; if(p.x<-.01) p.x=1.01; if(p.x>1.01) p.x=-.01;
+        var a = .25 + .6*(0.5 + 0.5*Math.sin(t*p.sp + p.ph));
         var X = p.x*w, Y = p.y*h;
-        var g = ctx.createRadialGradient(X,Y,0,X,Y,p.r*7);
-        var c = p.warm ? '239,168,60' : '176,160,255';
-        g.addColorStop(0,'rgba('+c+','+a+')');
-        g.addColorStop(1,'rgba('+c+',0)');
-        ctx.fillStyle = g;
-        ctx.beginPath(); ctx.arc(X,Y,p.r*7,0,7); ctx.fill();
-        ctx.fillStyle = 'rgba(255,236,200,'+Math.min(1,a+.25)+')';
-        ctx.beginPath(); ctx.arc(X,Y,p.r*.55,0,7); ctx.fill();
+        if(p.bright){
+          var g = ctx.createRadialGradient(X,Y,0,X,Y,p.r*6);
+          g.addColorStop(0,'rgba(207,196,255,'+(a*.5)+')');
+          g.addColorStop(1,'rgba(207,196,255,0)');
+          ctx.fillStyle = g;
+          ctx.beginPath(); ctx.arc(X,Y,p.r*6,0,7); ctx.fill();
+        }
+        ctx.fillStyle = 'rgba(255,255,255,'+a+')';
+        ctx.beginPath(); ctx.arc(X,Y,p.r*.8,0,7); ctx.fill();
       }
     })();
   }
-  fireflies(document.getElementById('lights'), 46);
-  fireflies(document.getElementById('lights2'), 30);
+  starfield(document.getElementById('stars'), 90);
+  starfield(document.getElementById('stars2'), 60);
 })();
 </script>
 </body>
